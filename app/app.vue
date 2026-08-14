@@ -17,7 +17,7 @@ import { modules } from '~/data/modules'
 import type { ModuleId } from '~/types'
 
 const { booted, init } = useBootSequence()
-const { windows, closeWindow, focusWindow } = useWindowManager()
+const { windows, closeWindow, focusWindow, moveWindow } = useWindowManager()
 const { terminalOpen, bind, isTerminalSupported } = useGlobalHotkeys()
 
 const panels: Record<ModuleId, unknown> = {
@@ -56,8 +56,11 @@ onMounted(() => {
           :title="moduleMeta(id).label.toUpperCase()"
           :subtitle="moduleMeta(id).subtitle"
           :z-index="windows[id].zIndex"
+          :x="windows[id].position?.x ?? null"
+          :y="windows[id].position?.y ?? null"
           @close="closeWindow(id)"
           @focus="focusWindow(id)"
+          @move="(newX, newY) => moveWindow(id, newX, newY)"
         >
           <component :is="panels[id]" />
         </OsWindow>
