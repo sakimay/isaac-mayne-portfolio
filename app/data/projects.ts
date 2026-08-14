@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 'rock-runners',
     name: 'Rock Runners',
-    description: 'Juego arcade web con física procedural y leaderboard en tiempo real.',
+    description: 'Comunidad para corredores que combina calendario de carreras, rankings, estadísticas, artículos especializados y herramientas para mejorar el rendimiento deportivo.',
     tech: ['Next', 'React', 'PostgreSQL', 'Supabase'],
     status: 'online',
     url: 'https://www.rockrunners.es',
@@ -12,7 +12,7 @@ export const projects: Project[] = [
   {
     id: 'padelnroll',
     name: 'PadelnRoll',
-    description: 'Plataforma de reservas y gestión de partidos de pádel entre jugadores.',
+    description: 'Portal especializado en pádel con análisis de productos, comparativas, recomendaciones personalizadas y contenido para ayudar a los jugadores a elegir el mejor equipamiento.',
     tech: ['Nuxt', 'Vue', 'PostgreSQL', 'Supabase'],
     status: 'online',
     url: 'https://padelnroll.es',
@@ -20,8 +20,8 @@ export const projects: Project[] = [
   {
     id: 'luckyrunners',
     name: 'Lucky Runners',
-    description: 'Juego de correr con elementos de suerte y mecánicas de progresión.',
-    tech: ['Next', 'React', 'PostgreSQL', 'Supabase'],
+    description: 'Web corporativa para un club de running de Sant Cugat. Presenta entrenamientos, coaching y la filosofía del club mediante una experiencia rápida, responsive y optimizada para móviles.',
+    tech: ['Astro', 'React'],
     status: 'online',
     url: 'https://luckyrunners.net',
   },
