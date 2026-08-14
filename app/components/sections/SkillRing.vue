@@ -11,7 +11,7 @@ const offset = computed(() => circumference * (1 - props.skill.level / 100))
 
 <template>
   <div class="flex flex-col items-center gap-2">
-    <svg viewBox="0 0 64 64" class="h-16 w-16">
+    <svg viewBox="0 0 64 64" class="h-16 w-16" role="img" :aria-label="`${skill.name}: level ${skill.level}`">
       <circle cx="32" cy="32" :r="radius" fill="none" stroke="white" stroke-opacity="0.08" stroke-width="5" />
       <circle
         cx="32" cy="32" :r="radius" fill="none"

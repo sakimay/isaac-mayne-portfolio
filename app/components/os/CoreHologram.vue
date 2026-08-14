@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ label?: string }>(), { label: 'ISAAC OS' })
+withDefaults(defineProps<{ label?: string }>(), { label: 'WELCOME' })
 </script>
 
 <template>

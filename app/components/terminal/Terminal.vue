@@ -75,7 +75,7 @@ onMounted(() => {
             aria-label="Close terminal"
             @click="emit('close')"
           >
-            ✕
+            <span aria-hidden="true">✕</span>
           </button>
         </header>
 
@@ -95,7 +95,7 @@ onMounted(() => {
             aria-label="Terminal command input"
             autocomplete="off"
             spellcheck="false"
-            class="flex-1 bg-transparent font-mono text-sm text-white outline-none placeholder:text-white/30"
+            class="flex-1 rounded bg-transparent font-mono text-sm text-white outline-none placeholder:text-white/30 focus-visible:ring-2 focus-visible:ring-os-cyan"
             placeholder="type a command..."
             @keydown.up.prevent="onArrowUp"
             @keydown.down.prevent="onArrowDown"

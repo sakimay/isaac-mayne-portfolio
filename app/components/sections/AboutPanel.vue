@@ -7,7 +7,7 @@ import { profile } from '~/data/profile'
     <div class="glass-panel rounded-xl border-os-purple/25 p-4">
       <p class="font-display text-lg text-white text-glow">{{ profile.name }}</p>
       <p class="text-xs tracking-[0.2em] text-os-cyan">{{ profile.callsign }}</p>
-      <p class="mt-1 text-xs text-white/40">{{ profile.experienceYears }}+ years of service</p>
+      <p class="mt-1 text-xs text-white/50">{{ profile.experienceYears }}+ years of service</p>
     </div>
 
     <p class="leading-relaxed">{{ profile.bio }}</p>

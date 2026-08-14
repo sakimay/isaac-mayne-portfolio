@@ -53,7 +53,7 @@ onMounted(play)
       </p>
       <span v-if="!done" class="inline-block h-4 w-2 animate-blink bg-os-cyan align-middle" />
     </div>
-    <p class="absolute bottom-8 text-xs tracking-widest text-white/30 font-mono">
+    <p class="absolute bottom-8 text-xs tracking-widest text-white/50 font-mono">
       CLICK OR PRESS ANY KEY TO SKIP
     </p>
   </div>

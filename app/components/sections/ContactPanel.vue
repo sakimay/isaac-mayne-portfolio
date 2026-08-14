@@ -17,7 +17,7 @@ import { contactLinks } from '~/data/contact'
         <p class="text-xs tracking-[0.15em] text-os-purple">{{ c.label.toUpperCase() }}</p>
         <p class="text-white/80">{{ c.value }}</p>
       </div>
-      <span class="text-os-cyan">→</span>
+      <span class="text-os-cyan" aria-hidden="true">→</span>
     </a>
   </div>
 </template>

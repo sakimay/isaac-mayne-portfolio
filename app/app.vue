@@ -65,7 +65,7 @@ onMounted(() => {
 
       <Terminal :open="terminalOpen" @close="terminalOpen = false" />
 
-      <p class="pointer-events-none fixed bottom-4 left-1/2 -translate-x-1/2 font-mono text-[0.65rem] tracking-widest text-white/25">
+      <p class="pointer-events-none fixed bottom-4 left-1/2 -translate-x-1/2 font-mono text-[0.65rem] tracking-widest text-white/50">
         PRESS CTRL+K FOR TERMINAL ACCESS
       </p>
     </template>
