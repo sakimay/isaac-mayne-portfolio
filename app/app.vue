@@ -18,7 +18,7 @@ import type { ModuleId } from '~/types'
 
 const { booted, init } = useBootSequence()
 const { windows, closeWindow, focusWindow } = useWindowManager()
-const { terminalOpen, bind } = useGlobalHotkeys()
+const { terminalOpen, bind, isTerminalSupported } = useGlobalHotkeys()
 
 const panels: Record<ModuleId, unknown> = {
   about: AboutPanel,
@@ -63,11 +63,13 @@ onMounted(() => {
         </OsWindow>
       </div>
 
-      <Terminal :open="terminalOpen" @close="terminalOpen = false" />
+      <template v-if="isTerminalSupported">
+        <Terminal :open="terminalOpen" @close="terminalOpen = false" />
 
-      <p class="pointer-events-none fixed bottom-4 left-1/2 -translate-x-1/2 font-mono text-[0.65rem] tracking-widest text-white/50">
-        PRESS CTRL+K FOR TERMINAL ACCESS
-      </p>
+        <p class="pointer-events-none fixed bottom-4 left-1/2 -translate-x-1/2 font-mono text-[0.65rem] tracking-widest text-white/50">
+          PRESS CTRL+K FOR TERMINAL ACCESS
+        </p>
+      </template>
     </template>
   </div>
 </template>

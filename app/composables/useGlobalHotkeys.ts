@@ -1,15 +1,17 @@
 import { ref } from 'vue'
-import { useEventListener } from '@vueuse/core'
+import { useEventListener, useMediaQuery } from '@vueuse/core'
 import { useWindowManager } from '~/composables/useWindowManager'
 
 const terminalOpen = ref(false)
 
 export function useGlobalHotkeys() {
   const { closeTopWindow } = useWindowManager()
+  const isTerminalSupported = useMediaQuery('(min-width: 640px)')
 
   function bind() {
     useEventListener(window, 'keydown', (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        if (!isTerminalSupported.value) return
         e.preventDefault()
         terminalOpen.value = !terminalOpen.value
         return
@@ -24,5 +26,5 @@ export function useGlobalHotkeys() {
     })
   }
 
-  return { terminalOpen, bind }
+  return { terminalOpen, bind, isTerminalSupported }
 }

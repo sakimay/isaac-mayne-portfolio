@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import CoreHologram from '~/components/os/CoreHologram.vue'
 import ModuleNode from '~/components/os/ModuleNode.vue'
+import ModuleListItem from '~/components/os/ModuleListItem.vue'
 import { modules } from '~/data/modules'
 import { useWindowManager } from '~/composables/useWindowManager'
 import type { ModuleId } from '~/types'
@@ -9,16 +10,19 @@ import type { ModuleId } from '~/types'
 const { openWindow } = useWindowManager()
 
 const radius = ref(220)
+const isMobile = ref(false)
 
-function updateRadius() {
-  radius.value = window.innerWidth < 640 ? 150 : window.innerWidth < 1024 ? 190 : 240
+function updateLayout() {
+  const width = window.innerWidth
+  isMobile.value = width < 640
+  radius.value = width < 640 ? 150 : width < 1024 ? 190 : 240
 }
 
 onMounted(() => {
-  updateRadius()
-  window.addEventListener('resize', updateRadius)
+  updateLayout()
+  window.addEventListener('resize', updateLayout)
 })
-onUnmounted(() => window.removeEventListener('resize', updateRadius))
+onUnmounted(() => window.removeEventListener('resize', updateLayout))
 
 function activate(id: ModuleId) {
   openWindow(id)
@@ -26,7 +30,18 @@ function activate(id: ModuleId) {
 </script>
 
 <template>
-  <div class="relative flex h-full w-full items-center justify-center">
+  <div v-if="isMobile" class="flex h-full w-full flex-col items-center gap-6 overflow-y-auto px-6 py-8">
+    <CoreHologram />
+    <div class="flex w-full max-w-sm flex-col gap-3">
+      <ModuleListItem
+        v-for="m in modules"
+        :key="m.id"
+        :module="m"
+        @activate="activate"
+      />
+    </div>
+  </div>
+  <div v-else class="relative flex h-full w-full items-center justify-center">
     <div class="relative">
       <CoreHologram />
       <ModuleNode
