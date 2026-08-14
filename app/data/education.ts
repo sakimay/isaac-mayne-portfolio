@@ -2,6 +2,13 @@ import type { EducationEntry } from '~/types'
 
 export const education: EducationEntry[] = [
   {
+    id: 'programacion-inteligente',
+    title: 'Programación Inteligente: domina el desarrollo asistido con IA',
+    institution: 'Training IT',
+    period: '2026',
+    description: 'Spec-Driven Development',
+  },
+  {
     id: 'react-typescript',
     title: 'Curso de React y TypeScript',
     institution: 'Udemy',

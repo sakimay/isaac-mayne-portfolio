@@ -2,11 +2,23 @@ import type { OtherExperienceEntry, WorkExperienceEntry } from '~/types'
 
 export const workExperience: WorkExperienceEntry[] = [
   {
+    id: 'rock-runners',
+    role: 'Fundador',
+    company: 'Rock Runners · Autónomo',
+    location: 'Sant Cugat del Vallès, Cataluña, España · En remoto',
+    period: 'Ago. 2024 - Actualidad',
+    highlights: [
+      'Fundación y desarrollo de Rock Runners, una comunidad para corredores con calendario de carreras, rankings, estadísticas y artículos especializados.',
+      'Diseño y desarrollo full-stack de la plataforma con Next.js, React y Supabase (PostgreSQL).',
+      'Gestión integral del proyecto como propietario: producto, tecnología y crecimiento de la comunidad.',
+    ],
+  },
+  {
     id: 'global-planing-solutions',
     role: 'Desarrollador web Fullstack',
     company: 'Global Planing Solutions',
     location: 'Barcelona',
-    period: 'Abr. 2025 - Presente',
+    period: 'Abr. 2025 - Actualidad',
     highlights: [
       'Desarrollo de aplicaciones web utilizando Vue.js y Node.js, asegurando una arquitectura moderna y escalable.',
       'Implementación de pruebas unitarias y de integración con Mocha para garantizar la calidad del código y la fiabilidad de las aplicaciones.',
