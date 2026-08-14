@@ -35,7 +35,7 @@ function onTabKeydown(e: KeyboardEvent) {
 </script>
 
 <template>
-  <div class="fixed inset-0 z-1 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+  <div class="fixed inset-0 z-1 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none">
     <div ref="rootEl"
       class="glass-panel pointer-events-auto absolute left-1/2 top-1/2 flex max-h-[80vh] w-[92vw] max-w-xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border-os-cyan/25"
       :style="{ zIndex }" role="dialog" aria-modal="true" :aria-labelledby="titleId" @mousedown="emit('focus')"
