@@ -4,6 +4,8 @@ import { profile } from '~/data/profile'
 import { projects } from '~/data/projects'
 import { skillGroups } from '~/data/skills'
 import { contactLinks } from '~/data/contact'
+import { otherExperience, workExperience } from '~/data/experience'
+import { education } from '~/data/education'
 
 export interface TerminalOutputLine {
   type: 'text' | 'error' | 'success' | 'link'
@@ -75,11 +77,28 @@ function buildCommands(): TerminalCommand[] {
       },
     },
     {
-      name: 'experiments',
-      description: 'Open the Research Lab',
+      name: 'experience',
+      description: 'Open Historial Laboral (work experience)',
       run: () => {
-        openWindow('experiments')
-        return [line('Opening RESEARCH LAB window...', 'success')]
+        openWindow('experience')
+        return [
+          line('Historial laboral:', 'success'),
+          ...workExperience.map(w => line(`  ${w.role} — ${w.company} (${w.period})`)),
+          ...otherExperience.map(o => line(`  ${o.role} (${o.period})`)),
+          line('Opening EXPERIENCE window...'),
+        ]
+      },
+    },
+    {
+      name: 'education',
+      description: 'Open Formación (education)',
+      run: () => {
+        openWindow('education')
+        return [
+          line('Formación:', 'success'),
+          ...education.map(e => line(`  ${e.title} — ${e.institution} (${e.period})`)),
+          line('Opening EDUCATION window...'),
+        ]
       },
     },
     {

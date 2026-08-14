@@ -1,4 +1,4 @@
-export type ModuleId = 'about' | 'projects' | 'skills' | 'experiments' | 'contact'
+export type ModuleId = 'about' | 'projects' | 'skills' | 'experience' | 'education' | 'contact'
 
 export interface Project {
   id: string
@@ -22,13 +22,28 @@ export interface SkillGroup {
   skills: Skill[]
 }
 
-export interface Experiment {
+export interface WorkExperienceEntry {
   id: string
-  name: string
+  role: string
+  company: string
+  location?: string
+  period: string
+  highlights: string[]
+}
+
+export interface OtherExperienceEntry {
+  id: string
+  role: string
+  period: string
   description: string
-  tags: string[]
-  status: 'active' | 'archived' | 'prototype'
-  url?: string
+}
+
+export interface EducationEntry {
+  id: string
+  title: string
+  institution: string
+  period: string
+  description?: string
 }
 
 export interface Profile {

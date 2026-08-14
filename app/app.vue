@@ -8,7 +8,8 @@ import Terminal from '~/components/terminal/Terminal.vue'
 import AboutPanel from '~/components/sections/AboutPanel.vue'
 import ProjectsPanel from '~/components/sections/ProjectsPanel.vue'
 import SkillsPanel from '~/components/sections/SkillsPanel.vue'
-import ExperimentsPanel from '~/components/sections/ExperimentsPanel.vue'
+import ExperiencePanel from '~/components/sections/ExperiencePanel.vue'
+import EducationPanel from '~/components/sections/EducationPanel.vue'
 import ContactPanel from '~/components/sections/ContactPanel.vue'
 import { useBootSequence } from '~/composables/useBootSequence'
 import { useWindowManager } from '~/composables/useWindowManager'
@@ -24,7 +25,8 @@ const panels: Record<ModuleId, unknown> = {
   about: AboutPanel,
   projects: ProjectsPanel,
   skills: SkillsPanel,
-  experiments: ExperimentsPanel,
+  experience: ExperiencePanel,
+  education: EducationPanel,
   contact: ContactPanel,
 }
 
