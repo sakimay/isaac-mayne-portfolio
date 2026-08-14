@@ -14,7 +14,7 @@ const y = Math.sin(rad) * props.radius
     type="button"
     class="group absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 rounded-2xl px-4 py-3 text-center transition-transform duration-300 ease-out hover:scale-110 focus-visible:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
     :style="{ top: `calc(50% + ${y}px)`, left: `calc(50% + ${x}px)` }"
-    :aria-label="`Open ${module.label} window`"
+    :aria-label="`Abrir ventana de ${module.label}`"
     @click="emit('activate', module.id)"
   >
     <span

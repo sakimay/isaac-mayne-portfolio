@@ -28,7 +28,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     id: 'ai',
-    label: 'AI Automation',
+    label: 'Automatización con IA',
     skills: [
       { id: 'agents', name: 'Agentes IA', level: 88 },
       { id: 'automation', name: 'Automatización de flujos', level: 82 },

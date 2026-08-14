@@ -9,7 +9,7 @@ const emit = defineEmits<{ activate: [id: ModuleDefinition['id']] }>()
   <button
     type="button"
     class="group glass-panel flex w-full items-center gap-3 rounded-xl border border-os-cyan/15 px-4 py-3 text-left transition-colors duration-300 ease-out hover:border-os-cyan/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
-    :aria-label="`Open ${module.label} window`"
+    :aria-label="`Abrir ventana de ${module.label}`"
     @click="emit('activate', module.id)"
   >
     <span

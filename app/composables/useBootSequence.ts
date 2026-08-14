@@ -4,10 +4,10 @@ import { useReducedMotion } from '~/composables/useReducedMotion'
 const STORAGE_KEY = 'isaac-os-booted'
 
 export const bootLines = [
-  'BOOTING ISAAC OS...',
-  'Loading modules...',
-  'Connecting AI systems...',
-  'System ready.',
+  'INICIANDO ISAAC OS...',
+  'Cargando módulos...',
+  'Conectando sistemas de IA...',
+  'Sistema listo.',
 ]
 
 const booted = ref(false)

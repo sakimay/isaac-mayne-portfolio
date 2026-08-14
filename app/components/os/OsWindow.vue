@@ -87,7 +87,7 @@ function onTabKeydown(e: KeyboardEvent) {
         </div>
         <button type="button" data-autofocus
           class="flex h-8 w-8 items-center justify-center rounded-full border border-os-purple/40 text-white/70 transition-colors hover:border-os-cyan hover:text-os-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
-          aria-label="Close window" @click="emit('close')">
+          aria-label="Cerrar ventana" @click="emit('close')">
           <span aria-hidden="true">✕</span>
         </button>
       </header>

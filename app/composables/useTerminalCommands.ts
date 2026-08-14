@@ -20,7 +20,7 @@ interface TerminalCommand {
 }
 
 const history = reactive<TerminalOutputLine[]>([
-  { type: 'success', content: 'Isaac OS terminal ready. Type "help" for available commands.' },
+  { type: 'success', content: 'Terminal de Isaac OS lista. Escribe "help" para ver los comandos disponibles.' },
 ])
 const commandHistory = reactive<string[]>([])
 
@@ -34,116 +34,116 @@ function buildCommands(): TerminalCommand[] {
   const commands: TerminalCommand[] = [
     {
       name: 'help',
-      description: 'List available commands',
+      description: 'Lista los comandos disponibles',
       run: () => [
-        line('Available commands:', 'success'),
+        line('Comandos disponibles:', 'success'),
         ...commands.map(c => line(`  ${c.name.padEnd(12)} — ${c.description}`)),
       ],
     },
     {
       name: 'about',
-      description: 'Open the System Architect profile',
+      description: 'Abre el perfil del Arquitecto de Sistemas',
       run: () => {
         openWindow('about')
         return [
           line(`${profile.name} — ${profile.callsign}`, 'success'),
           line(profile.bio),
-          line('Opening ABOUT window...'),
+          line('Abriendo ventana ABOUT...'),
         ]
       },
     },
     {
       name: 'projects',
-      description: 'Open Active Modules (projects)',
+      description: 'Abre Módulos Activos (proyectos)',
       run: () => {
         openWindow('projects')
         return [
-          line('Active modules:', 'success'),
+          line('Módulos activos:', 'success'),
           ...projects.map(p => line(`  ${p.name} — ${p.status.toUpperCase()}`)),
-          line('Opening PROJECTS window...'),
+          line('Abriendo ventana PROJECTS...'),
         ]
       },
     },
     {
       name: 'skills',
-      description: 'Open Energy Systems (skills)',
+      description: 'Abre Sistemas de Energía (habilidades)',
       run: () => {
         openWindow('skills')
         return [
-          line('Energy systems online:', 'success'),
+          line('Sistemas de energía en línea:', 'success'),
           ...skillGroups.map(g => line(`  ${g.label}`)),
-          line('Opening SKILLS window...'),
+          line('Abriendo ventana SKILLS...'),
         ]
       },
     },
     {
       name: 'experience',
-      description: 'Open Historial Laboral (work experience)',
+      description: 'Abre Historial Laboral (experiencia)',
       run: () => {
         openWindow('experience')
         return [
           line('Historial laboral:', 'success'),
           ...workExperience.map(w => line(`  ${w.role} — ${w.company} (${w.period})`)),
           ...otherExperience.map(o => line(`  ${o.role} (${o.period})`)),
-          line('Opening EXPERIENCE window...'),
+          line('Abriendo ventana EXPERIENCE...'),
         ]
       },
     },
     {
       name: 'education',
-      description: 'Open Formación (education)',
+      description: 'Abre Formación (educación)',
       run: () => {
         openWindow('education')
         return [
           line('Formación:', 'success'),
           ...education.map(e => line(`  ${e.title} — ${e.institution} (${e.period})`)),
-          line('Opening EDUCATION window...'),
+          line('Abriendo ventana EDUCATION...'),
         ]
       },
     },
     {
       name: 'contact',
-      description: 'Open the Communication Center',
+      description: 'Abre el Centro de Comunicaciones',
       run: () => {
         openWindow('contact')
         return [
-          line('Communication channels:', 'success'),
+          line('Canales de comunicación:', 'success'),
           ...contactLinks.map(c => line(`  ${c.label}: ${c.value}`, 'link', c.href)),
-          line('Opening CONTACT window...'),
+          line('Abriendo ventana CONTACT...'),
         ]
       },
     },
     {
       name: 'rockrunners',
-      description: 'Show details for Rock Runners',
+      description: 'Muestra detalles de Rock Runners',
       run: () => {
         const p = projects.find(p => p.id === 'rock-runners')!
         openProject(p.id)
         return [
           line(`${p.name} — ${p.status.toUpperCase()}`, 'success'),
           line(p.description),
-          line(`Tech: ${p.tech.join(', ')}`),
+          line(`Tecnología: ${p.tech.join(', ')}`),
           ...(p.url ? [line(p.url, 'link', p.url)] : []),
         ]
       },
     },
     {
       name: 'padelnroll',
-      description: 'Show details for PadelnRoll',
+      description: 'Muestra detalles de PadelnRoll',
       run: () => {
         const p = projects.find(p => p.id === 'padelnroll')!
         openProject(p.id)
         return [
           line(`${p.name} — ${p.status.toUpperCase()}`, 'success'),
           line(p.description),
-          line(`Tech: ${p.tech.join(', ')}`),
+          line(`Tecnología: ${p.tech.join(', ')}`),
           ...(p.url ? [line(p.url, 'link', p.url)] : []),
         ]
       },
     },
     {
       name: 'clear',
-      description: 'Clear terminal output',
+      description: 'Limpia la salida del terminal',
       run: () => {
         history.splice(0, history.length)
         return []
@@ -170,7 +170,7 @@ export function useTerminalCommands() {
     const command = commands.find(c => c.name === name)
 
     if (!command) {
-      history.push(line(`Command not found: "${name}". Type "help" for available commands.`, 'error'))
+      history.push(line(`Comando no encontrado: "${name}". Escribe "help" para ver los comandos disponibles.`, 'error'))
       return
     }
 

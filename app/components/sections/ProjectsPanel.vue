@@ -39,7 +39,7 @@ const statusStyles: Record<string, string> = {
         rel="noopener noreferrer"
         class="mt-2 inline-block text-xs text-os-cyan hover:text-glow"
       >
-        Visit module <span aria-hidden="true">→</span>
+        Visitar módulo <span aria-hidden="true">→</span>
       </a>
     </div>
   </div>

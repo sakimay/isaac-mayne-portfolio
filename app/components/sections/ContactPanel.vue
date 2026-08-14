@@ -4,7 +4,7 @@ import { contactLinks } from '~/data/contact'
 
 <template>
   <div class="space-y-3 font-mono text-sm">
-    <p class="text-white/50">&gt; Incoming channel list — select a frequency to connect.</p>
+    <p class="text-white/50">&gt; Lista de canales entrantes — selecciona una frecuencia para conectar.</p>
     <a
       v-for="c in contactLinks"
       :key="c.id"

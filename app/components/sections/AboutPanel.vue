@@ -7,20 +7,20 @@ import { profile } from '~/data/profile'
     <div class="glass-panel rounded-xl border-os-purple/25 p-4">
       <p class="font-display text-lg text-white text-glow">{{ profile.name }}</p>
       <p class="text-xs tracking-[0.2em] text-os-cyan">{{ profile.callsign }}</p>
-      <p class="mt-1 text-xs text-white/50">{{ profile.experienceYears }}+ years of service</p>
+      <p class="mt-1 text-xs text-white/50">{{ profile.experienceYears }}+ años de servicio</p>
     </div>
 
     <p class="leading-relaxed">{{ profile.bio }}</p>
 
     <div>
-      <h3 class="mb-2 font-display text-xs tracking-[0.15em] text-os-purple">TECH STACK</h3>
+      <h3 class="mb-2 font-display text-xs tracking-[0.15em] text-os-purple">STACK TECNOLÓGICO</h3>
       <div class="flex flex-wrap gap-2">
         <span v-for="t in profile.tech" :key="t" class="nav-pill">{{ t }}</span>
       </div>
     </div>
 
     <div>
-      <h3 class="mb-2 font-display text-xs tracking-[0.15em] text-os-purple">SPECIALTIES</h3>
+      <h3 class="mb-2 font-display text-xs tracking-[0.15em] text-os-purple">ESPECIALIDADES</h3>
       <ul class="space-y-1.5">
         <li v-for="s in profile.specialties" :key="s" class="flex items-center gap-2">
           <span class="h-1.5 w-1.5 rounded-full bg-os-cyan" />

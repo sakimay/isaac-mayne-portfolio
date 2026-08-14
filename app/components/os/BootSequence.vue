@@ -40,7 +40,7 @@ onMounted(play)
     class="fixed inset-0 z-50 flex cursor-pointer flex-col items-center justify-center bg-os-deep px-6"
     role="button"
     tabindex="0"
-    aria-label="Skip boot sequence"
+    aria-label="Omitir secuencia de arranque"
     @click="skip"
     @keydown.enter="skip"
     @keydown.space.prevent="skip"
@@ -54,7 +54,7 @@ onMounted(play)
       <span v-if="!done" class="inline-block h-4 w-2 animate-blink bg-os-cyan align-middle" />
     </div>
     <p class="absolute bottom-8 text-xs tracking-widest text-white/50 font-mono">
-      CLICK OR PRESS ANY KEY TO SKIP
+      HAZ CLIC O PULSA CUALQUIER TECLA PARA OMITIR
     </p>
   </div>
 </template>

@@ -72,7 +72,7 @@ onMounted(() => {
           <button
             type="button"
             class="text-white/50 hover:text-os-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
-            aria-label="Close terminal"
+            aria-label="Cerrar terminal"
             @click="emit('close')"
           >
             <span aria-hidden="true">✕</span>
@@ -92,11 +92,11 @@ onMounted(() => {
             ref="inputEl"
             v-model="input"
             type="text"
-            aria-label="Terminal command input"
+            aria-label="Entrada de comandos del terminal"
             autocomplete="off"
             spellcheck="false"
             class="flex-1 rounded bg-transparent font-mono text-sm text-white outline-none placeholder:text-white/30 focus-visible:ring-2 focus-visible:ring-os-cyan"
-            placeholder="type a command..."
+            placeholder="escribe un comando..."
             @keydown.up.prevent="onArrowUp"
             @keydown.down.prevent="onArrowDown"
           >
