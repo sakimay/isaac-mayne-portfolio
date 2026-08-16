@@ -1,15 +1,26 @@
 import type { Profile } from '~/types'
 
 export const profile: Profile = {
-  name: 'Isaac Mayne',
-  callsign: 'ARQUITECTO DE SISTEMAS',
+  name: 'Isaac Mayné',
+  callsign: 'FULL-STACK WEB ENGINEER',
   experienceYears: 6,
-  bio: 'Comandante de sistemas full-stack especializado en construir interfaces de alto rendimiento e infraestructura en el edge. Opera entre el diseño de producto y la ingeniería de plataforma, manteniendo cada módulo de la nave en línea.',
-  tech: ['Vue', 'Nuxt', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Cloudflare Workers', 'Supabase', 'PostgreSQL'],
+  bio: 'Desarrollador web especializado en la creación de plataformas digitales escalables, desde la arquitectura frontend hasta la automatización de procesos y el despliegue en infraestructuras cloud. Trabajo principalmente con Nuxt, Vue, TypeScript, Supabase y Cloudflare para construir productos rápidos, mantenibles y optimizados para SEO. Me apasiona transformar ideas en proyectos reales, combinando desarrollo web, inteligencia artificial y automatización para crear soluciones útiles y orientadas al usuario.',
+
+  tech: [
+    'Nuxt',
+    'Vue',
+    'TypeScript',
+    'Tailwind CSS',
+    'Cloudflare',
+    'Supabase',
+    'PostgreSQL',
+    'Node.js'
+  ],
+
   specialties: [
-    'Arquitectura frontend escalable',
-    'Automatización con IA',
-    'Infraestructura serverless / edge',
-    'Diseño de interfaces futuristas',
+    'Arquitectura web full-stack',
+    'Automatización e IA',
+    'Cloudflare & Edge Computing',
+    'SEO técnico y rendimiento web',
   ],
 }

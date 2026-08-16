@@ -4,10 +4,17 @@ import { profile } from '~/data/profile'
 
 <template>
   <div class="space-y-5 font-mono text-sm text-white/80">
+    <div class="mb-3 flex justify-center">
+      <img
+        src="/images/isaac-image.jpg"
+        alt="Foto de Isaac Mayné"
+        class="h-24 w-24 md:h-40 md:w-40 rounded-full border border-os-cyan/40 object-cover"
+      >
+    </div>
     <div class="glass-panel rounded-xl border-os-purple/25 p-4">
       <p class="font-display text-lg text-white text-glow">{{ profile.name }}</p>
       <p class="text-xs tracking-[0.2em] text-os-cyan">{{ profile.callsign }}</p>
-      <p class="mt-1 text-xs text-white/50">{{ profile.experienceYears }}+ años de servicio</p>
+      <p class="mt-1 text-xs text-white/50">{{ profile.experienceYears }}+ años de experiencia</p>
     </div>
 
     <p class="leading-relaxed">{{ profile.bio }}</p>
