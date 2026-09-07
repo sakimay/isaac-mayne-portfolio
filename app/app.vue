@@ -15,6 +15,10 @@ import { useBootSequence } from '~/composables/useBootSequence'
 import { useWindowManager } from '~/composables/useWindowManager'
 import { useGlobalHotkeys } from '~/composables/useGlobalHotkeys'
 import { modules } from '~/data/modules'
+import { profile } from '~/data/profile'
+import { projects } from '~/data/projects'
+import { skillGroups } from '~/data/skills'
+import { workExperience } from '~/data/experience'
 import type { ModuleId } from '~/types'
 
 const { booted, init } = useBootSequence()
@@ -38,11 +42,73 @@ onMounted(() => {
   init()
   bind()
 })
+
+const { public: { siteUrl, linkedinUrl, githubUrl } } = useRuntimeConfig()
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: profile.name,
+        jobTitle: profile.callsign,
+        description: profile.bio,
+        url: `${siteUrl}/`,
+        image: `${siteUrl}/images/isaac-image.jpg`,
+        knowsAbout: profile.tech,
+        sameAs: [linkedinUrl, githubUrl],
+      }),
+    },
+  ],
+})
 </script>
 
 <template>
   <div class="relative h-screen w-screen">
     <NuxtRouteAnnouncer />
+
+    <!-- Contenido accesible para lectores de pantalla y buscadores.
+         La interfaz visual es una app tipo escritorio que oculta el
+         contenido hasta que el usuario interactúa; este bloque garantiza
+         que la información real siempre esté presente en el HTML. -->
+    <section class="sr-only">
+      <h1>{{ profile.name }} — {{ profile.callsign }}</h1>
+      <p>{{ profile.bio }}</p>
+
+      <h2>Stack tecnológico</h2>
+      <ul>
+        <li v-for="t in profile.tech" :key="t">{{ t }}</li>
+      </ul>
+
+      <h2>Especialidades</h2>
+      <ul>
+        <li v-for="s in profile.specialties" :key="s">{{ s }}</li>
+      </ul>
+
+      <h2>Proyectos</h2>
+      <ul>
+        <li v-for="p in projects" :key="p.id">
+          <a :href="p.url" rel="noopener">{{ p.name }}</a> — {{ p.description }}
+        </li>
+      </ul>
+
+      <h2>Habilidades</h2>
+      <ul>
+        <li v-for="g in skillGroups" :key="g.id">
+          {{ g.label }}: {{ g.skills.map(s => s.name).join(', ') }}
+        </li>
+      </ul>
+
+      <h2>Experiencia profesional</h2>
+      <ul>
+        <li v-for="e in workExperience" :key="e.id">
+          {{ e.role }} en {{ e.company }} ({{ e.period }})
+        </li>
+      </ul>
+    </section>
+
     <OsBackground />
 
     <BootSequence v-if="!booted" />

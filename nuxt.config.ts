@@ -1,5 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://isaacmayne.netlify.app'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -28,23 +30,33 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://isaac-os.example.com',
-    name: 'Isaac OS',
+    url: siteUrl,
+    name: 'Isaac Mayné — Full-Stack Web Engineer',
   },
 
   app: {
     head: {
-      title: 'Isaac OS — Isaac Mayne',
+      title: 'Isaac Mayné — Full-Stack Web Engineer | Isaac OS',
       htmlAttrs: { lang: 'es' },
       meta: [
-        { name: 'description', content: 'Isaac OS — el sistema operativo de la nave de Isaac Mayne. Portfolio interactivo de un system architect.' },
+        { name: 'description', content: 'Portfolio interactivo de Isaac Mayné, desarrollador full-stack especializado en Nuxt, Vue, TypeScript, Supabase y Cloudflare. Más de 6 años de experiencia construyendo productos web rápidos y optimizados para SEO.' },
         { name: 'theme-color', content: '#081426' },
-        { property: 'og:title', content: 'Isaac OS' },
-        { property: 'og:description', content: 'Portfolio interactivo estilo sistema operativo de nave espacial.' },
+        { name: 'robots', content: 'index, follow' },
+        { property: 'og:site_name', content: 'Isaac OS' },
+        { property: 'og:title', content: 'Isaac Mayné — Full-Stack Web Engineer' },
+        { property: 'og:description', content: 'Portfolio interactivo estilo sistema operativo de nave espacial. Nuxt, Vue, TypeScript, Supabase, Cloudflare.' },
         { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: `${siteUrl}/` },
+        { property: 'og:image', content: `${siteUrl}/images/isaac-image.jpg` },
+        { property: 'og:locale', content: 'es_ES' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Isaac Mayné — Full-Stack Web Engineer' },
+        { name: 'twitter:description', content: 'Portfolio interactivo estilo sistema operativo de nave espacial. Nuxt, Vue, TypeScript, Supabase, Cloudflare.' },
+        { name: 'twitter:image', content: `${siteUrl}/images/isaac-image.jpg` },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'canonical', href: `${siteUrl}/` },
       ],
     },
   },
@@ -55,6 +67,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      siteUrl,
       email: 'isaac@example.com',
       linkedinUrl: 'https://linkedin.com/in/example',
       githubUrl: 'https://github.com/example',
