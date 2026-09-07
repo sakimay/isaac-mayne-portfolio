@@ -32,14 +32,14 @@ function activate(id: ModuleId) {
 <template>
   <div v-if="isMobile" class="flex h-full w-full flex-col items-center gap-6 overflow-y-auto px-6 py-8">
     <CoreHologram />
-    <div class="flex w-full max-w-sm flex-col gap-3">
+    <nav aria-label="Módulos" class="flex w-full max-w-sm flex-col gap-3">
       <ModuleListItem
         v-for="m in modules"
         :key="m.id"
         :module="m"
         @activate="activate"
       />
-    </div>
+    </nav>
   </div>
   <div v-else class="relative flex h-full w-full items-center justify-center">
     <div class="relative">

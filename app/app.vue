@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import BootSequence from '~/components/os/BootSequence.vue'
 import OsBackground from '~/components/os/OsBackground.vue'
 import Desktop from '~/components/os/Desktop.vue'
@@ -37,6 +37,10 @@ const panels: Record<ModuleId, unknown> = {
 function moduleMeta(id: ModuleId) {
   return modules.find(m => m.id === id)!
 }
+
+const dialogOpen = computed(() =>
+  Object.values(windows).some(w => w.isOpen) || terminalOpen.value,
+)
 
 onMounted(() => {
   init()
@@ -114,7 +118,9 @@ useHead({
     <BootSequence v-if="!booted" />
 
     <template v-else>
-      <Desktop />
+      <div class="h-full w-full" :inert="dialogOpen">
+        <Desktop />
+      </div>
 
       <div id="windows-root" class="pointer-events-none fixed inset-0">
         <OsWindow
@@ -137,9 +143,14 @@ useHead({
       <template v-if="isTerminalSupported">
         <Terminal :open="terminalOpen" @close="terminalOpen = false" />
 
-        <p class="pointer-events-none fixed bottom-4 left-1/2 -translate-x-1/2 font-mono text-[0.65rem] tracking-widest text-white/50">
-          PULSA CTRL+K PARA ACCEDER AL TERMINAL
-        </p>
+        <button
+          type="button"
+          class="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 font-mono text-[0.65rem] tracking-widest text-white/50 transition-colors hover:text-os-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
+          :inert="dialogOpen"
+          @click="terminalOpen = true"
+        >
+          ABRIR TERMINAL (CTRL+K)
+        </button>
       </template>
     </template>
   </div>

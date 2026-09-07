@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useBootSequence, bootLines } from '~/composables/useBootSequence'
 
 const { prefersReducedMotion, complete } = useBootSequence()
@@ -32,29 +32,37 @@ function skip() {
   finish()
 }
 
-onMounted(play)
+function onKeydown() {
+  skip()
+}
+
+onMounted(() => {
+  play()
+  window.addEventListener('keydown', onKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKeydown)
+})
 </script>
 
 <template>
   <div
-    class="fixed inset-0 z-50 flex cursor-pointer flex-col items-center justify-center bg-os-deep px-6"
-    role="button"
-    tabindex="0"
-    aria-label="Omitir secuencia de arranque"
-    @click="skip"
-    @keydown.enter="skip"
-    @keydown.space.prevent="skip"
-    @keydown.escape="skip"
+    class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-os-deep px-6"
   >
-    <div class="absolute inset-0 grid-bg opacity-40" />
-    <div class="relative w-full max-w-md font-mono text-sm text-os-cyan sm:text-base">
+    <div class="absolute inset-0 grid-bg opacity-40" aria-hidden="true" />
+    <div class="relative w-full max-w-md font-mono text-sm text-os-cyan sm:text-base" aria-hidden="true">
       <p v-for="l in visibleLines" :key="l" class="mb-2 text-glow">
         &gt; {{ l }}
       </p>
       <span v-if="!done" class="inline-block h-4 w-2 animate-blink bg-os-cyan align-middle" />
     </div>
-    <p class="absolute bottom-8 text-xs tracking-widest text-white/50 font-mono">
+    <button
+      type="button"
+      class="absolute bottom-8 cursor-pointer bg-transparent text-xs tracking-widest text-white/50 font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
+      @click="skip"
+    >
       HAZ CLIC O PULSA CUALQUIER TECLA PARA OMITIR
-    </p>
+    </button>
   </div>
 </template>

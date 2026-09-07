@@ -17,7 +17,7 @@ const contactLinks = useContactLinks()
     >
       <div>
         <p class="text-xs tracking-[0.15em] text-os-purple">{{ c.label.toUpperCase() }}</p>
-        <p class="text-white/80">{{ c.value }}</p>
+        <p class="text-white/80">{{ c.value }}<span class="sr-only"> (se abre en una nueva pestaña)</span></p>
       </div>
       <span class="text-os-cyan" aria-hidden="true">→</span>
     </a>

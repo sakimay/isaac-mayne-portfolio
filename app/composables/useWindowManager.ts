@@ -24,6 +24,7 @@ const windows = reactive<Record<ModuleId, WindowState>>(
 
 const openOrder = reactive<ModuleId[]>([])
 const highlightedProjectId = ref<string | null>(null)
+const returnFocusEls: Partial<Record<ModuleId, HTMLElement | null>> = {}
 
 function focusWindow(id: ModuleId) {
   const index = openOrder.indexOf(id)
@@ -66,6 +67,7 @@ function computeInitialPosition(): { x: number; y: number } {
 }
 
 function openWindow(id: ModuleId) {
+  returnFocusEls[id] = typeof document !== 'undefined' ? (document.activeElement as HTMLElement | null) : null
   windows[id].isOpen = true
   if (!windows[id].position && isDesktopViewport()) {
     windows[id].position = computeInitialPosition()
@@ -81,6 +83,8 @@ function closeWindow(id: ModuleId) {
   windows[id].isOpen = false
   const index = openOrder.indexOf(id)
   if (index !== -1) openOrder.splice(index, 1)
+  returnFocusEls[id]?.focus()
+  returnFocusEls[id] = null
 }
 
 function toggleWindow(id: ModuleId) {

@@ -10,7 +10,7 @@ const stars = Array.from({ length: 80 }, (_, i) => ({
 </script>
 
 <template>
-  <div class="fixed inset-0 -z-10 overflow-hidden bg-os-deep">
+  <div class="fixed inset-0 -z-10 overflow-hidden bg-os-deep" aria-hidden="true">
     <div
       class="absolute inset-0"
       style="background: radial-gradient(ellipse 60% 50% at 50% 35%, rgba(139,92,246,0.14) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 30% 70%, rgba(0,229,255,0.10) 0%, transparent 60%)"

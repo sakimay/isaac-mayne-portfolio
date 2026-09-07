@@ -9,6 +9,30 @@ const { history, execute, previousCommand, nextCommand } = useTerminalCommands()
 const input = ref('')
 const inputEl = ref<HTMLInputElement | null>(null)
 const scrollEl = ref<HTMLElement | null>(null)
+const rootEl = ref<HTMLElement | null>(null)
+let returnFocusEl: HTMLElement | null = null
+
+function close() {
+  emit('close')
+}
+
+function onTabKeydown(e: KeyboardEvent) {
+  if (e.key !== 'Tab' || !rootEl.value) return
+  const focusable = rootEl.value.querySelectorAll<HTMLElement>(
+    'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+  )
+  if (focusable.length === 0) return
+  const first = focusable[0]
+  const last = focusable[focusable.length - 1]
+  if (!last || !first) return
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault()
+    last.focus()
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault()
+    first.focus()
+  }
+}
 
 const lineStyles: Record<string, string> = {
   text: 'text-white/75',
@@ -45,8 +69,12 @@ watch(
   () => props.open,
   async (isOpen) => {
     if (isOpen) {
+      returnFocusEl = document.activeElement as HTMLElement | null
       await nextTick()
       inputEl.value?.focus()
+    } else {
+      returnFocusEl?.focus()
+      returnFocusEl = null
     }
   },
 )
@@ -65,15 +93,22 @@ onMounted(() => {
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <div v-if="open" class="fixed inset-0 z-[60] flex items-start justify-center bg-black/50 px-4 pt-[10vh]" @click.self="emit('close')">
-      <div class="glass-panel w-full max-w-2xl overflow-hidden rounded-2xl border-os-cyan/30">
+    <div v-if="open" class="fixed inset-0 z-[60] flex items-start justify-center bg-black/50 px-4 pt-[10vh]" @click.self="close" @keydown.escape="close">
+      <div
+        ref="rootEl"
+        class="glass-panel w-full max-w-2xl overflow-hidden rounded-2xl border-os-cyan/30"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Terminal ISAAC OS"
+        @keydown="onTabKeydown"
+      >
         <header class="flex items-center justify-between border-b border-os-cyan/15 px-4 py-2.5">
           <span class="font-display text-xs tracking-[0.15em] text-os-cyan">ISAAC OS TERMINAL</span>
           <button
             type="button"
             class="text-white/50 hover:text-os-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-os-cyan"
             aria-label="Cerrar terminal"
-            @click="emit('close')"
+            @click="close"
           >
             <span aria-hidden="true">✕</span>
           </button>
@@ -81,7 +116,7 @@ onMounted(() => {
 
         <div ref="scrollEl" role="log" aria-live="polite" class="max-h-[45vh] space-y-1 overflow-y-auto px-4 py-3 font-mono text-xs sm:text-sm">
           <p v-for="(l, i) in history" :key="i" :class="lineStyles[l.type]">
-            <a v-if="l.type === 'link' && l.href" :href="l.href" target="_blank" rel="noopener noreferrer">{{ l.content }}</a>
+            <a v-if="l.type === 'link' && l.href" :href="l.href" target="_blank" rel="noopener noreferrer">{{ l.content }}<span class="sr-only"> (se abre en una nueva pestaña)</span></a>
             <template v-else>{{ l.content }}</template>
           </p>
         </div>
