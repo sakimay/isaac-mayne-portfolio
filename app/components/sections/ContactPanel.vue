@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { contactLinks } from '~/data/contact'
+import { useContactLinks } from '~/data/contact'
+
+const contactLinks = useContactLinks()
 </script>
 
 <template>

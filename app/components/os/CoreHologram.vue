@@ -26,7 +26,7 @@
     <div class="relative flex h-24 w-24 flex-col items-center justify-center rounded-full glass-panel glow-cyan sm:h-32 sm:w-32">
       <span class="font-display text-[0.6rem] tracking-[0.2em] text-os-cyan text-glow sm:text-xs text-center">ISAAC MAYNÉ</span>
       <span class="my-1 h-1 w-1 rounded-full bg-os-cyan animate-pulse-glow" />
-      <span class="font-display text-[0.6rem] tracking-[0.2em] text-os-cyan text-glow sm:text-xs text-center">WEB DEVELOPER</span>
+      <span class="font-display text-[0.6rem] tracking-[0.2em] text-os-cyan text-glow sm:text-xs text-center">PORTFOLIO PERSONAL</span>
     </div>
   </div>
 </template>

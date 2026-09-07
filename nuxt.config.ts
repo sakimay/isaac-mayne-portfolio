@@ -52,4 +52,12 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+
+  runtimeConfig: {
+    public: {
+      email: 'isaac@example.com',
+      linkedinUrl: 'https://linkedin.com/in/example',
+      githubUrl: 'https://github.com/example',
+    },
+  },
 })

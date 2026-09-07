@@ -3,7 +3,7 @@ import { useWindowManager } from '~/composables/useWindowManager'
 import { profile } from '~/data/profile'
 import { projects } from '~/data/projects'
 import { skillGroups } from '~/data/skills'
-import { contactLinks } from '~/data/contact'
+import { useContactLinks } from '~/data/contact'
 import { otherExperience, workExperience } from '~/data/experience'
 import { education } from '~/data/education'
 
@@ -108,7 +108,7 @@ function buildCommands(): TerminalCommand[] {
         openWindow('contact')
         return [
           line('Canales de comunicación:', 'success'),
-          ...contactLinks.map(c => line(`  ${c.label}: ${c.value}`, 'link', c.href)),
+          ...useContactLinks().map(c => line(`  ${c.label}: ${c.value}`, 'link', c.href)),
           line('Abriendo ventana CONTACT...'),
         ]
       },
