@@ -42,7 +42,7 @@ function buildCommands(): TerminalCommand[] {
     },
     {
       name: 'about',
-      description: 'Abre el perfil del Arquitecto de Sistemas',
+      description: 'Abre el perfil del Front-end Developer',
       run: () => {
         openWindow('about')
         return [
