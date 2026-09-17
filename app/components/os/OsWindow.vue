@@ -70,9 +70,9 @@ function onTabKeydown(e: KeyboardEvent) {
 </script>
 
 <template>
-  <div class="fixed inset-0 z-1 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none">
+  <div class="fixed inset-0 z-1 flex items-center justify-center bg-black/40 sm:bg-transparent">
     <div ref="rootEl"
-      class="glass-panel pointer-events-auto flex max-h-[80vh] w-[92vw] max-w-xl flex-col overflow-hidden rounded-2xl border-os-cyan/25"
+      class="glass-panel pointer-events-auto flex max-h-[85dvh] w-[92vw] max-w-xl flex-col overflow-hidden rounded-2xl border-os-cyan/25"
       :class="hasPosition ? 'sm:absolute' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'"
       :style="hasPosition ? { zIndex, left: `${x}px`, top: `${y}px` } : { zIndex }"
       role="dialog" aria-modal="true" :aria-labelledby="titleId" @mousedown="emit('focus')"

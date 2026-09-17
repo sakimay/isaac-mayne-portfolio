@@ -61,6 +61,7 @@ body {
   color: #e6f6ff;
   font-family: var(--font-body);
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 ::selection {
@@ -84,15 +85,25 @@ body {
   .glass-panel {
     background: linear-gradient(
       160deg,
-      color-mix(in srgb, var(--color-os-deep-3) 78%, transparent) 0%,
-      color-mix(in srgb, var(--color-os-deep-2) 70%, transparent) 100%
+      color-mix(in srgb, var(--color-os-deep-3) 92%, transparent) 0%,
+      color-mix(in srgb, var(--color-os-deep-2) 88%, transparent) 100%
     );
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
     border: 1px solid color-mix(in srgb, var(--color-os-cyan) 22%, transparent);
     box-shadow:
       0 0 0 1px color-mix(in srgb, var(--color-os-purple) 12%, transparent) inset,
       0 20px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+
+  @media (min-width: 640px) {
+    .glass-panel {
+      background: linear-gradient(
+        160deg,
+        color-mix(in srgb, var(--color-os-deep-3) 78%, transparent) 0%,
+        color-mix(in srgb, var(--color-os-deep-2) 70%, transparent) 100%
+      );
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
   }
 
   .glow-cyan {
@@ -155,6 +166,12 @@ body {
     border-color: var(--color-os-cyan);
     color: #04141b;
     box-shadow: 0 0 18px color-mix(in srgb, var(--color-os-cyan) 55%, transparent);
+  }
+}
+
+@media (max-width: 639px) {
+  .star-anim {
+    animation: none !important;
   }
 }
 

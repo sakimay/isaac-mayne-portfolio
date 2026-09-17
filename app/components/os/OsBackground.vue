@@ -20,7 +20,7 @@ const stars = Array.from({ length: 80 }, (_, i) => ({
       <div
         v-for="star in stars"
         :key="star.id"
-        class="absolute rounded-full bg-white"
+        class="absolute rounded-full bg-white star-anim"
         :style="{
           top: `${star.top}%`,
           left: `${star.left}%`,

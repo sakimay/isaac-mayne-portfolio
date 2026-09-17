@@ -70,7 +70,7 @@ useHead({
 </script>
 
 <template>
-  <div class="relative h-screen w-screen">
+  <div class="relative h-dvh w-screen">
     <NuxtRouteAnnouncer />
 
     <!-- Contenido accesible para lectores de pantalla y buscadores.
